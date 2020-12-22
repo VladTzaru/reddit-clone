@@ -1,5 +1,4 @@
-import e from 'express';
-import { User } from 'src/entities/User';
+import { User } from '../entities/User';
 import { MyContext } from 'src/types';
 import { Arg, Ctx, Field, InputType, Mutation, Resolver } from 'type-graphql';
 

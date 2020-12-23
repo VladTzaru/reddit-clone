@@ -30,7 +30,7 @@ const Register: React.FC<RegisterProps> = ({}) => {
         initialValues={{ username: '', password: '' }}
         onSubmit={(values) => {
           console.log(values);
-          register(values);
+          return register(values);
         }}
       >
         {({ isSubmitting }) => (

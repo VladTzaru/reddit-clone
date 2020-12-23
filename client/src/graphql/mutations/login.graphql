@@ -1,0 +1,15 @@
+# UsernameAndPasswordInput! refers to the InputType defined in the user resolver
+mutation Login($options: UsernameAndPasswordInput!) {
+  login(options: $options) {
+    errors {
+      field
+      message
+    }
+    user {
+      id
+      createdAt
+      updatedAt
+      username
+    }
+  }
+}

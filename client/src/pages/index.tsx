@@ -1,7 +1,11 @@
+import { NavBar } from '../components/NavBar';
+import Login from './login';
+import Register from './register';
+
 const Index = () => (
-  <div>
-    <h1>Hi there</h1>
-  </div>
+  <>
+    <NavBar />
+  </>
 );
 
 export default Index;

@@ -5,10 +5,12 @@ import { InputField } from '../components/InputField';
 import { Box, Button } from '@chakra-ui/react';
 import { useRegisterMutation } from '../generated/graphql';
 import { toErrorMap } from '../utils/toErrorMap';
+import { useRouter } from 'next/router';
 
 interface RegisterProps {}
 
 const Register: React.FC<RegisterProps> = ({}) => {
+  const router = useRouter();
   const [, register] = useRegisterMutation();
   return (
     <Wrapper variant='small'>
@@ -18,6 +20,8 @@ const Register: React.FC<RegisterProps> = ({}) => {
           const response = await register(values); // We pass values because it infers the paramaters from our mutation
           if (response.data?.register.errors) {
             setErrors(toErrorMap(response.data.register.errors));
+          } else if (response.data?.register.user) {
+            router.push('/');
           }
         }}
       >

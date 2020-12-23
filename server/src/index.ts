@@ -9,6 +9,7 @@ import { buildSchema } from 'type-graphql';
 import redis from 'redis';
 import session from 'express-session';
 import connectRedix from 'connect-redis';
+import cors from 'cors';
 
 // Resolvers
 import { HelloResolver } from './resolvers/hello';
@@ -26,6 +27,13 @@ const main = async () => {
 
   const RedisStore = connectRedix(session);
   const redisClient = redis.createClient();
+
+  app.use(
+    cors({
+      origin: 'http://localhost:3000',
+    })
+  );
+
   app.use(
     // Runs before apollo middleware because we need to have the session first
     session({
@@ -54,7 +62,7 @@ const main = async () => {
     context: ({ req, res }): MyContext => ({ em: orm.em, req, res }), // Exposes orm object to our resolvers
   });
 
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({ app, cors: false });
 
   app.listen(5000, () => {
     console.log('Server started on localhost:5000');

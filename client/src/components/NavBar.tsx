@@ -12,17 +12,19 @@ export const NavBar: React.FC<{}> = ({}) => {
     // Since we init. body we can leave it out
     // User not logged in
   } else if (!data?.me) {
-    <>
-      <NextLink href='/login'>
-        <Link color='white' mr={4}>
-          Login
-        </Link>
-      </NextLink>
+    body = (
+      <>
+        <NextLink href='/login'>
+          <Link color='white' mr={4}>
+            Login
+          </Link>
+        </NextLink>
 
-      <NextLink href='/register'>
-        <Link color='white'>Register</Link>
-      </NextLink>
-    </>;
+        <NextLink href='/register'>
+          <Link color='white'>Register</Link>
+        </NextLink>
+      </>
+    );
 
     // User logged in
   } else {

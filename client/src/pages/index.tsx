@@ -5,6 +5,7 @@ import Register from './register';
 const Index = () => (
   <>
     <NavBar />
+    <h1>Home</h1>
   </>
 );
 
